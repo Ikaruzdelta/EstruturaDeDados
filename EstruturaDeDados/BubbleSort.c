@@ -4,20 +4,20 @@
 #define TAM 10
 
 /*
-    "BubbleSort" ou "Ordenação por bolha"
+    "BubbleSort" ou "OrdenaÃ§Ã£o por bolha"
 
     - Compara pares de elementos adjacentes e
     os troca de lugar se estiverem na ordem errada
 
-    - Esse Processo se repete até que mais nenhumma
-    troca seja necessaria (elementos já ordenados)
+    - Esse Processo se repete atÃ© que mais nenhumma
+    troca seja necessaria (elementos jÃ¡ ordenados)
 
     "Performace"
     - Melhor caso: O(N)
     - Pior caso: O(N^2)
-    - Não recomenda para grandes conjuntos de dados
+    - NÃ£o recomenda para grandes conjuntos de dados
 */
-//Aqui eu estou testando o envio
+
 int main()
 {
     setlocale(LC_ALL, "");
@@ -25,7 +25,7 @@ int main()
     int numeros[TAM];
     int i, aux, contador;
 
-    printf("Entre com dez números para preencher o array e pressione enter após digitar cada um:\n");
+    printf("Entre com dez nÃºmeros para preencher o array e pressione enter apÃ³s digitar cada um:\n");
     for(i = 0; i < TAM; i++)
     {
         scanf("%d", &numeros[i]);
@@ -37,7 +37,7 @@ int main()
         printf("%3d", numeros[i]);
     }
 
-    //Algoritmo de ordenação BubbleSort:
+    //Algoritmo de ordenaÃ§Ã£o BubbleSort:
     for(contador = 1; contador < TAM; contador++)
     {
         for (i = 0; i < TAM - 1; i++)
@@ -51,7 +51,7 @@ int main()
         }
     }
 
-    printf("\nElementos com ordenalção BubbleSort:\n");
+    printf("\nElementos com ordenalÃ§Ã£o BubbleSort:\n");
     for(i = 0; i < TAM; i++)
     {
         printf("%3d", numeros[i]);
