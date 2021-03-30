@@ -17,7 +17,7 @@
     - Pior caso: O(N^2)
     - Não recomenda para grandes conjuntos de dados
 */
-
+//Começamos o código como exemplo:
 int main()
 {
     setlocale(LC_ALL, "");
