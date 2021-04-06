@@ -19,7 +19,7 @@
     - Pior caso: O(N^2)
     - Não recomenda para grandes conjuntos de dados
 */
-
+/*
 int main()
 {
     setlocale(LC_ALL, "");
@@ -60,4 +60,4 @@ int main()
     }
     return 0;
 }
-
+*/

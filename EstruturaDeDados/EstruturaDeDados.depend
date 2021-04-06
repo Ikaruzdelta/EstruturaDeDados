@@ -3,7 +3,12 @@
 	<stdio.h>
 	<stdlib.h>
 
-1617132668 source:c:\users\ikaru\onedrive\documentos\codblocksprojects\estruturadedados\estruturadedados\bubblesort.c
+1617707944 source:c:\users\ikaru\onedrive\documentos\codblocksprojects\estruturadedados\estruturadedados\bubblesort.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+
+1617711309 source:c:\users\ikaru\onedrive\documentos\codblocksprojects\estruturadedados\estruturadedados\inserçãodireta.c
 	<stdio.h>
 	<stdlib.h>
 	<locale.h>
