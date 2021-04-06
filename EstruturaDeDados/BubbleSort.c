@@ -6,6 +6,8 @@
 /*
     "BubbleSort" ou "Ordenação por bolha"
 
+    A ideia do método da Bolha é inicia comparando os dois últimos elementos ou o contrario !
+
     - Compara pares de elementos adjacentes e
     os troca de lugar se estiverem na ordem errada
 
