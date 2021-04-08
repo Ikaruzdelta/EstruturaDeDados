@@ -33,6 +33,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Atividade_01.cpp" />
 		<Unit filename="BubbleSort.c">
 			<Option compilerVar="CC" />
 		</Unit>

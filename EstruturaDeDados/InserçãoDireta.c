@@ -11,6 +11,8 @@ elemento, da direita para a esqueda, que não seja maior que V[i], digamos que se
 eles uma posição para a sua direita, abrindo a posição V[j] para inserir o V[i].
 */
 
+
+/*
 int main()
 {
     setlocale(LC_ALL, "");
@@ -49,3 +51,4 @@ int main()
     }
     return 0;
 }
+*/
