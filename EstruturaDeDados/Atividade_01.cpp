@@ -3,6 +3,8 @@
 #include <iostream>
 #include <fstream>
 using namespace std;
+
+
 //Funções:
 void CadastrarAluno();
 void ListarIdade();
@@ -18,7 +20,6 @@ struct Alunos
     int idade;
     string nome;
 };
-
 struct Alunos dados[50];
 
 //Váriavel Global
@@ -32,6 +33,7 @@ int main()
     cout << "== 1- Cadastrar Aluno ===========" << endl;
     cout << "== 2- Listar alunos por idade ===" << endl;
     cout << "== 3- Listar alunos por media ===" << endl;
+    cout << "== 4- Para finalizar programa ===" << endl;
     cout << "Escolha a opção: ";
     cin>>opcao;
     switch(opcao)
@@ -48,6 +50,11 @@ int main()
         system("cls");
         ListarMedia();
         break;
+    case 4:
+        cout << endl;
+        cout << "Programa encerrado";
+        cout << endl;
+        exit(0);
     default:
         cout << "Numero invalido" << endl;
         system("pause");
@@ -60,9 +67,9 @@ int main()
 
 void CadastrarAluno()
 {
-    if(contador < 49)
+    do
     {
-        do
+        if(contador <= 49)
         {
             fflush(stdin);
             cout << "Digite o nome do aluno: " << endl;
@@ -87,11 +94,20 @@ void CadastrarAluno()
             cin >> opcao;
             system("cls");
         }
-        while(opcao == 0);
-        system("cls");
-        main();
+        else
+        {
+            cout << endl;
+            cout << "Cadatramentro cheio!" << endl;
+            system("pause");
+            system("cls");
+            main();
+        }
     }
+    while(opcao == 0);
+    system("cls");
+    main();
 }
+
 
 void ListarIdade()
 {
@@ -153,27 +169,42 @@ void ListarIdade()
         cout << endl;
     }
     system("pause");
+    system("cls");
     main();
 }
 
 void ListarMedia()
 {
+    double temp, temp2, temp3, temp4;
     int k;
-    double temp;
+    int aux;
+    string aux2;
     for(int j = 1; j < contador; j++)
     {
         k = j;
         temp = dados[j].media;
-        while((k > 0)&&(temp < dados[k-1].media)){
+        temp2 = dados[j].nota1;
+        temp3 = dados[j].nota2;
+        temp4 = dados[j].nota3;
+        aux = dados[j].idade;
+        aux2 = dados[j].nome;
+
+        while((k > 0)&&(temp > dados[k-1].media))
+        {
             dados[k].media = dados[k-1].media;
-            dados[k].nome = dados[k-1].nome;
             dados[k].nota1 = dados[k-1].nota1;
             dados[k].nota2 = dados[k-1].nota2;
             dados[k].nota3 = dados[k-1].nota3;
             dados[k].idade = dados[k-1].idade;
+            dados[k].nome = dados[k-1].nome;
             k--;
         }
         dados[k].media = temp;
+        dados[k].nota1 = temp2;
+        dados[k].nota2 = temp3;
+        dados[k].nota3 = temp4;
+        dados[k].idade = aux;
+        dados[k].nome = aux2;
     }
 
     cout << "=======LISTANDO ALUNO POR ORDEM DA MEDIA=======" << endl;
@@ -188,5 +219,6 @@ void ListarMedia()
         cout << endl;
     }
     system("pause");
+    system("cls");
     main();
 }
