@@ -3,7 +3,8 @@
 #include <iostream>
 #include <fstream>
 using namespace std;
-
+ //Ícaro Gabriel
+ //Lucas Pereira
 
 //Funções:
 void CadastrarAluno();
@@ -175,6 +176,7 @@ void ListarIdade()
 
 void ListarMedia()
 {
+    //Aqui usei a inserção direta para ordenação
     double temp, temp2, temp3, temp4;
     int k;
     int aux;
