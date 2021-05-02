@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <fstream>
+/*
 using namespace std;
  //Ícaro Gabriel
  //Lucas Pereira
@@ -224,3 +225,4 @@ void ListarMedia()
     system("cls");
     main();
 }
+*/
