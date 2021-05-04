@@ -40,6 +40,9 @@
 		<Unit filename="InserçãoDireta.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="ListaLinear.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
