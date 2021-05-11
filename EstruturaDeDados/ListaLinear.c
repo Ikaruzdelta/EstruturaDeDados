@@ -1,10 +1,11 @@
+/*
 #include <stdio.h>
 #include <stdlib.h>
 
 int maximo = 30;
 int quantidade = 0;
 
-/*Função que cria dinamicamente uma lista vazia*/
+//Função que cria dinamicamente uma lista vazia
 int* criaLista()
 {
     int *lista;
@@ -20,7 +21,7 @@ int* criaLista()
     }
 }
 
-/*Função que faz a inserção de um elemento em uma lista não ordenada*/
+//Função que faz a inserção de um elemento em uma lista não ordenada
 int insereNaoOrd(int *lista)
 {
     if(quantidade < maximo)
@@ -32,7 +33,7 @@ int insereNaoOrd(int *lista)
     return 0;
 }
 
-/*Função que faz inserção ordenada de elemento em lista ordenada*/
+//Função que faz inserção ordenada de elemento em lista ordenada
 int insereOrdenado(int *lista)
 {
     int elemento, x = quantidade-1;
@@ -53,7 +54,7 @@ int insereOrdenado(int *lista)
         return 0;
 }
 
-/*Função que exibe a lista*/
+//Função que exibe a lista
 void mostraLista(int *lista)
 {
     for(int x=0; x<quantidade; x++)
@@ -62,8 +63,8 @@ void mostraLista(int *lista)
     }
 }
 
-/*Função que faz pesquisa sequencial em lista não ordenada retornando o índice do elemento e
-  -1 caso o elemento não seja encontrado*/
+//Função que faz pesquisa sequencial em lista não ordenada retornando o índice do elemento e
+  -1 caso o elemento não seja encontrado
 int pesqSequencial(int *lista, int chave)
 {
     for(int x=0; x<quantidade; x++)
@@ -72,7 +73,7 @@ int pesqSequencial(int *lista, int chave)
     return -1;
 }
 
-/*Função que faz remoção de lista ordenada*/
+//Função que faz remoção de lista ordenada
 int removeOrdenado(int *lista, int chave)
 {
     int resp;
@@ -88,7 +89,7 @@ int removeOrdenado(int *lista, int chave)
         return 0;
 }
 
-/*Função que faz pesquisa binária - Obs: Só funciona em lista ordenada*/
+//Função que faz pesquisa binária - Obs: Só funciona em lista ordenada
 int pesqBinaria(int *lista, int chave)
 {
     int inicio = 0, fim = quantidade-1, meio;
@@ -108,8 +109,9 @@ int pesqBinaria(int *lista, int chave)
     return -1;
 }
 
-/*Função que faz a remoção de um valor de uma lista não ordenada, caso o valor a ser removido
-não seja encontrado a função retorna 0*/
+//Função que faz a remoção de um valor de uma lista não ordenada, caso o valor a ser removido
+//não seja encontrado a função retorna 0
+
 int removeNaoOrd(int *lista, int chave)
 {
     int aux;
@@ -198,3 +200,4 @@ void main()
     while(op != 0);
     free(vetor);
 }
+*/
