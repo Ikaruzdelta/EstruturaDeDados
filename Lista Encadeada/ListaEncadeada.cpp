@@ -1,16 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*Implementação de lista encadeada feita em sala*/
+/*ImplementaÃ§Ã£o de lista encadeada feita em sala*/
 
-/*Estrutura que representa um nó da lista*/
+/*Estrutura que representa um nÃ³ da lista*/
 typedef struct no
 {
     int dado;
     struct no *proxNo;
 } tipoNo;
 
-/*Estrutura que guarda as informações de uma lista encadeada*/
+/*Estrutura que guarda as informaÃ§Ãµes de uma lista encadeada*/
 typedef struct listaGerenciada
 {
     tipoNo *inicio;
@@ -18,7 +18,7 @@ typedef struct listaGerenciada
     int quant;
 } tipoLista;
 
-/*Função que faz a inicialização da lista encadeada*/
+/*FunÃ§Ã£o que faz a inicializaÃ§Ã£o da lista encadeada*/
 void inicializa(tipoLista *listaEnc)
 {
     listaEnc->inicio = NULL;
@@ -26,7 +26,7 @@ void inicializa(tipoLista *listaEnc)
     listaEnc->quant = 0;
 }
 
-/*Função que faz a inserção de um nó em uma lista vazia*/
+/*FunÃ§Ã£o que faz a inserÃ§Ã£o de um nÃ³ em uma lista vazia*/
 int insereListaVazia(tipoLista *listaEnc, int valor)
 {
     tipoNo *novoNo;
@@ -42,10 +42,10 @@ int insereListaVazia(tipoLista *listaEnc, int valor)
 }
 
 
-/*Função que percorre a lista exibindo todos os seus dados*/
+/*FunÃ§Ã£o que percorre a lista exibindo todos os seus dados*/
 void exibeLista(tipoLista *listaEnc)
 {
-    tipoNo *atual;  /*Variável que será usada para percorrer a lista*/
+    tipoNo *atual;  /*VariÃ¡vel que serÃ¡ usada para percorrer a lista*/
     atual = listaEnc->inicio;
     printf("\nLista encadeada: ");
     while(atual !=NULL)
@@ -55,8 +55,8 @@ void exibeLista(tipoLista *listaEnc)
     }
 }
 
-/*Função que recebe um valor e pesquisa se ele está na lista, retornando sua posição*/
-/*Obs: está sendo considerado que a primeira posição é igual a 1*/
+/*FunÃ§Ã£o que recebe um valor e pesquisa se ele estÃ¡ na lista, retornando sua posiÃ§Ã£o*/
+/*Obs: estÃ¡ sendo considerado que a primeira posiÃ§Ã£o Ã© igual a 1*/
 int buscaDado(tipoLista *listaEnc, int valor)
 {
     tipoNo *atual;
@@ -72,7 +72,7 @@ int buscaDado(tipoLista *listaEnc, int valor)
     return 0;
 }
 
-/*Função que insere um nó na frente de uma lista encadeada*/
+/*FunÃ§Ã£o que insere um nÃ³ na frente de uma lista encadeada*/
 int insereNaFrente(tipoLista *listaEnc, int valor)
 {
     tipoNo *novoNo;
@@ -91,7 +91,7 @@ int insereNaFrente(tipoLista *listaEnc, int valor)
     }
 }
 
-/*Função para inserir elemento no fim da lista encadeada*/
+/*FunÃ§Ã£o para inserir elemento no fim da lista encadeada*/
 int insereNoFim(tipoLista *listaEnc, int valor)
 {
     tipoNo *novoNo;
@@ -110,7 +110,7 @@ int insereNoFim(tipoLista *listaEnc, int valor)
     }
 }
 
-/*Função que remove primeiro elemento da lista encadeada*/
+/*FunÃ§Ã£o que remove primeiro elemento da lista encadeada*/
 void removeDaFrente(tipoLista *listaEnc)
 {
     tipoNo *aux;
@@ -122,7 +122,7 @@ void removeDaFrente(tipoLista *listaEnc)
     free(aux);
 }
 
-/*Função que testa se a lista está vazia*/
+/*FunÃ§Ã£o que testa se a lista estÃ¡ vazia*/
 int estaVazia(tipoLista *listaEnc)
 {
     if(listaEnc->inicio == NULL)
@@ -131,14 +131,14 @@ int estaVazia(tipoLista *listaEnc)
         return 0;
 }
 
-/*Função que destroi a lista corretamente, fazendo a liberação da memória alocada*/
+/*FunÃ§Ã£o que destroi a lista corretamente, fazendo a liberaÃ§Ã£o da memÃ³ria alocada*/
 void destruirLista(tipoLista *listaEnc)
 {
     while(!estaVazia(listaEnc))
         removeDaFrente(listaEnc);
 }
 
-/*Função que remove o último elemento da lista*/
+/*FunÃ§Ã£o que remove o Ãºltimo elemento da lista*/
 void removeDoFim(tipoLista *listaEnc)
 {
     tipoNo *atual, *antigo;
@@ -162,8 +162,8 @@ void removeDoFim(tipoLista *listaEnc)
     free(atual);
 }
 
-/*Função que insere um valor na lista em posição específica recebida como parâmetro*/
-/*Obs: Foi considerado que a primeira posição da lista é igual a 1*/
+/*FunÃ§Ã£o que insere um valor na lista em posiÃ§Ã£o especÃ­fica recebida como parÃ¢metro*/
+/*Obs: Foi considerado que a primeira posiÃ§Ã£o da lista Ã© igual a 1*/
 int insereEmPos(tipoLista *listaEnc, int pos, int valor)
 {
     tipoNo *novoNo, *atual;

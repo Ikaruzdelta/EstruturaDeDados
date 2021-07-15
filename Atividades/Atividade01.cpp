@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include <iostream>
 #include <fstream>
-/*
+
 using namespace std;
- //Õcaro Gabriel
+ //√çcaro Gabriel
  //Lucas Pereira
 
-//FunÁıes:
+//Fun√ß√µes:
 void CadastrarAluno();
 void ListarIdade();
 void ListarMedia();
@@ -24,7 +24,7 @@ struct Alunos
 };
 struct Alunos dados[50];
 
-//V·riavel Global
+//V√°riavel Global
 int contador = 0, opcao;
 
 int main()
@@ -36,7 +36,7 @@ int main()
     cout << "== 2- Listar alunos por idade ===" << endl;
     cout << "== 3- Listar alunos por media ===" << endl;
     cout << "== 4- Para finalizar programa ===" << endl;
-    cout << "Escolha a opÁ„o: ";
+    cout << "Escolha a op√ß√£o: ";
     cin>>opcao;
     switch(opcao)
     {
@@ -120,7 +120,7 @@ void ListarIdade()
     double aux5;
     double aux6;
 
-    //Por idade usei o mÈtodo por bolha
+    //Por idade usei o m√©todo por bolha
     for(int j = 1; j < contador; j++)
     {
         for (int i = 0; i < contador - 1; i++)
@@ -177,7 +177,7 @@ void ListarIdade()
 
 void ListarMedia()
 {
-    //Aqui usei a inserÁ„o direta para ordenaÁ„o
+    //Aqui usei a inser√ß√£o direta para ordena√ß√£o
     double temp, temp2, temp3, temp4;
     int k;
     int aux;
@@ -225,4 +225,3 @@ void ListarMedia()
     system("cls");
     main();
 }
-*/
