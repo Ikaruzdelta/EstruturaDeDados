@@ -77,7 +77,7 @@ int inserNo(tipoNode *pai, int n, char tipoFilho)
     {
         if (temFilhoEsq(pai))
         {
-            printf("\nImpossivel Inserir! No já tem filho na Esquerda");
+            printf("\nImpossivel Inserir! No ja tem filho na Esquerda");
             return 0;
         }
         else
@@ -90,7 +90,7 @@ int inserNo(tipoNode *pai, int n, char tipoFilho)
     {
         if (temFilhoDir(pai))
         {
-            printf("\nImpossivel Inserir! No já tem filho na Direita");
+            printf("\nImpossivel Inserir! No ja tem filho na Direita");
             return 0;
         }
         else
@@ -103,14 +103,14 @@ int inserNo(tipoNode *pai, int n, char tipoFilho)
 
 int main()
 {
-    tipoNode *raiz;
+    tipoNode *raiz = NULL;
     int op, valor, valorpai;
     char esqOrDir;
     do
     {
-        printf("Esolha sua opcao:");
+        printf("\nEsolha sua opcao:");
         printf("\n1- Insere um no na arvore");
-        printf("\n2- Exibe a arvore em ordem aritmetica");
+        printf("\n2- Exibe a arvore em ordem simetrica");
         printf("\n0- Encerra o programa");
         printf("\nDigite sua opcao: ");
         scanf("%d", &op);
@@ -136,8 +136,8 @@ int main()
                 else
                 {
                     fflush(stdin);
-                    printf("\nDigite se o seu filho será da esquerda <e> ou Direita <d>: ");
-                    scanf("%s", &esqOrDir);
+                    printf("\nDigite se o seu filho sera da esquerda <e> ou Direita <d>: ");
+                    scanf("%c", &esqOrDir);
                     inserNo(achou, valor, esqOrDir);
                     if (inserNo(achou, valor, esqOrDir))
                     {
