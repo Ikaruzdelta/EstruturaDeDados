@@ -51,7 +51,7 @@ public class TArvore {
 
 	public void Remove(TNodo T, TInfo X) {
 		if (T == null)
-			System.out.print("Elemento n„o encontrado\n");
+			System.out.print("Elemento n√£o encontrado\n");
 		else
 			if (X.chave == T.item.chave) 
 			{

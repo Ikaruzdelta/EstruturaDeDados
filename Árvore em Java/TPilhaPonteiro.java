@@ -22,7 +22,7 @@ public class TPilhaPonteiro {
 
 	public TNodo pop() {
 		if (vazia ()) {
-			System.out.print ("Erro : A lista est· vazia.\n");
+			System.out.print ("Erro : A lista est√° vazia.\n");
 		    return null;
 		}
 		else {
