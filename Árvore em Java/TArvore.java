@@ -37,10 +37,10 @@ public class TArvore {
 			return T;
 		} else {
 
-			if (item.chave == T.item.chave) 
+			if (item.chave == T.item.chave) // compara para saber se é o elemento que procura
 				return T;
 			else
-				if (item.chave < T.item.chave) 
+				if (item.chave < T.item.chave) //Verifica em que lado ele tá
 					T = pesquisa(T.esq,item);
 				else
 					T = pesquisa(T.dir,item);
@@ -53,15 +53,15 @@ public class TArvore {
 		if (T == null)
 			System.out.print("Elemento não encontrado\n");
 		else
-			if (X.chave == T.item.chave) 
+			if (X.chave == T.item.chave) //Compara para ver se o elemento existe
 			{
 				TNodo P = T;
 				if ((T.esq == null) && (T.dir == null)) {
-					if (T.pai == null)
+					if (T.pai == null) // O pai, ou seja, da onde ele é apontado
 					{
-						this.T = null;
+						this.T = null; // Se for a raiz ela é vazia
 					} else
-						if (T.item.chave > T.pai.item.chave)
+						if (T.item.chave > T.pai.item.chave) // compara o filho com o pai para saber qual remover
 							T.pai.dir = null;
 						else
 							T.pai.esq = null;
@@ -100,7 +100,7 @@ public class TArvore {
 
 			} 
 			else
-				if (X.chave < T.item.chave) 
+				if (X.chave < T.item.chave) // Se não achar compara o valor para escolher em que lado vai percorrer
 					Remove(T.esq,X);
 				else
 					Remove(T.dir,X);
