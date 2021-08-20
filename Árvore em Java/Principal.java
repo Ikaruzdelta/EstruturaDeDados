@@ -74,7 +74,7 @@ public class Principal {
 		System.out.print("Removendo a chave 180\n");
 		System.out.print("Nó folha, sem filhos\n");
 		item.chave = 180;
-		T1.Remove(T1.raiz(), item);
+		T1.Remove(T1.raiz( ), item);
 		T1.mostraArvore();
 
 		System.out.print("Removendo a chave 80\n");
