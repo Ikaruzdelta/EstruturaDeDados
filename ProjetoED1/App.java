@@ -5,10 +5,8 @@ public class App {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
-        /// HIST_PAINEL_COVIDBR_2021_Parte2_08jul2021
-        /// PastaTeste
-        String path1 = "C:/Users/Ikaruz/Downloads/HIST_PAINEL_COVIDBR_2021_Parte1_08jul2021.csv";
-        String path2 = "C:/Users/Ikaruz/Downloads/HIST_PAINEL_COVIDBR_2021_Parte2_08jul2021.csv";
+        String path1 = "C:/Users/Ikaruz/Documents/ProjectsVscode/C++/EstruturaDeDados/ProjetoED1/Arquivos usados/HIST_PAINEL_COVIDBR_2021_Parte1_08jul2021.csv";
+        String path2 = "C:/Users/Ikaruz/Documents/ProjectsVscode/C++/EstruturaDeDados/ProjetoED1/Arquivos usados/HIST_PAINEL_COVIDBR_2021_Parte2_08jul2021.csv";
 
         TArvoreAVL arvore = new TArvoreAVL();
 
