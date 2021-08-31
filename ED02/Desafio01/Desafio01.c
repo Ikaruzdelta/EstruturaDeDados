@@ -74,28 +74,38 @@ TLista* exclui(TLista* li, int i) {
 	atual = li;
 	antigo = NULL;
 	while (atual != NULL) { /* encontra o ultimo elemento */
-		
 		if(atual->info == i)
 		{
 			antigo->prox = atual->prox;
+			free(atual);
+			return li;
 		}
 		antigo = atual;
 		atual = atual->prox;
 	}
-	free(atual);
-	return li;
+	
 }
 
 //alterar um item da lista
 TLista* altera(TLista* li, int vantigo, int vnovo) {
-	//TODO
-	return NULL;
+	TLista *p;
+	p = li;
+	while (p != NULL)
+	{
+		if(p->info == vantigo)
+		{
+			p->info = vnovo;
+		}
+		p = p->prox;
+	}
+	return li;
 }
 
 //inserir recursivamente de forma ordenada
 TLista* insere_ordenado_recursivo(TLista *li, TLista* ant, int i) {
-	//TODO
-	return NULL;
+	TLista *p, *ant;
+	p = li;
+	ant = NULL;
 }
 
 int main () {
@@ -142,7 +152,7 @@ int main () {
 	/* Insere elementos de forma recursiva ordenada na lista */
 	TLista *l5;
 	l5 = cria_lista();
-	// l5 = insere_ordenado_recursivo(l5, NULL, 22);
+	l5 = insere_ordenado_recursivo(l5, NULL, 22);
 	// l5 = insere_ordenado_recursivo(l5, NULL, 21);
 	// l5 = insere_ordenado_recursivo(l5, NULL, 25);
 	// l5 = insere_ordenado_recursivo(l5, NULL, 23);
@@ -165,15 +175,15 @@ int main () {
 
 	printf("\nLista 6 Excluindo:\n");
 	l6 = exclui(l6, 3);
-	l6 = exclui(l6, 4);
-	l6 = exclui(l6, 5);
+	// l6 = exclui(l6, 4);
+	// l6 = exclui(l6, 5);
 	imprime(l6);
 
-	// l6 = altera(l6, 6, 10);
-	// l6 = altera(l6, 7, 20);
-	// l6 = altera(l6, 15, 30);
-	// printf("\nLista 6 alterado:\n");
-	//imprime(l6);
+	l6 = altera(l6, 4, 10);
+	l6 = altera(l6, 5, 20);
+	l6 = altera(l6, 6, 30);
+	printf("\nLista 6 alterado:\n");
+	imprime(l6);
 
 	return 0;
 }
