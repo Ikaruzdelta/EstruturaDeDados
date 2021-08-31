@@ -83,7 +83,6 @@ TLista* exclui(TLista* li, int i) {
 		antigo = atual;
 		atual = atual->prox;
 	}
-	
 }
 
 //alterar um item da lista
@@ -103,9 +102,27 @@ TLista* altera(TLista* li, int vantigo, int vnovo) {
 
 //inserir recursivamente de forma ordenada
 TLista* insere_ordenado_recursivo(TLista *li, TLista* ant, int i) {
-	TLista *p, *ant;
-	p = li;
-	ant = NULL;
+	if(li == NULL || li->info < i)
+	{
+		if(ant == NULL)
+		{
+			TLista* novo = (TLista*) malloc(sizeof(TLista));
+			novo->info = i;
+			novo->prox = li;
+			li = novo;
+		}
+		else
+		{	
+			TLista* novo = (TLista*) malloc(sizeof(TLista));
+			novo->prox = ant->prox;
+			ant->prox = novo;
+		}
+	}
+	else
+	{
+		li->prox = insere_ordenado_recursivo(li->prox, ant, i);
+	}
+	return li;
 }
 
 int main () {
@@ -153,11 +170,11 @@ int main () {
 	TLista *l5;
 	l5 = cria_lista();
 	l5 = insere_ordenado_recursivo(l5, NULL, 22);
-	// l5 = insere_ordenado_recursivo(l5, NULL, 21);
-	// l5 = insere_ordenado_recursivo(l5, NULL, 25);
-	// l5 = insere_ordenado_recursivo(l5, NULL, 23);
-	// l5 = insere_ordenado_recursivo(l5, NULL, 3);
-	// l5 = insere_ordenado_recursivo(l5, NULL, 0);
+	l5 = insere_ordenado_recursivo(l5, NULL, 21);
+	l5 = insere_ordenado_recursivo(l5, NULL, 25);
+	l5 = insere_ordenado_recursivo(l5, NULL, 23);
+	l5 = insere_ordenado_recursivo(l5, NULL, 3);
+	l5 = insere_ordenado_recursivo(l5, NULL, 0);
 	printf("\nLista 5:\n");
 	imprime(l5);
 
