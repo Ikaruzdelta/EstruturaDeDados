@@ -69,22 +69,20 @@ TLista* insere_fim_recursivo (TLista* li, int i) {
 	return li;
 }
 
-//excluir um item da lista
-// q vai apontar para o p->prox->prox
-// depois elimina o p->prox
 TLista* exclui(TLista* li, int i) {
-	TLista* p = li;
-	TLista* q = li;
-	while (p != NULL) { /* encontra o ultimo elemento */
-		if(p->prox->info == i)
+	TLista *atual, *antigo;
+	atual = li;
+	antigo = NULL;
+	while (atual != NULL) { /* encontra o ultimo elemento */
+		
+		if(atual->info == i)
 		{
-			p->prox->info == NULL;
-			q = p->prox;
+			antigo->prox = atual->prox;
 		}
-		q = p;
-		p = p->prox->prox;
+		antigo = atual;
+		atual = atual->prox;
 	}
-	
+	free(atual);
 	return li;
 }
 
@@ -162,18 +160,20 @@ int main () {
 	l6 = insere_fim_recursivo(l6, 5);
     l6 = insere_fim_recursivo(l6, 6);
 	l6 = insere_fim_recursivo(l6, 8);
+	printf("\nLista 6:\n");
+	imprime(l6);
 
 	printf("\nLista 6 Excluindo:\n");
 	l6 = exclui(l6, 3);
-	l6 = exclui(l6, 2);
+	l6 = exclui(l6, 4);
 	l6 = exclui(l6, 5);
 	imprime(l6);
 
 	// l6 = altera(l6, 6, 10);
 	// l6 = altera(l6, 7, 20);
 	// l6 = altera(l6, 15, 30);
-	printf("\nLista 6:\n");
-	imprime(l6);
+	// printf("\nLista 6 alterado:\n");
+	//imprime(l6);
 
 	return 0;
 }
