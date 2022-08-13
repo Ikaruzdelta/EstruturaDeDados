@@ -1,3 +1,10 @@
+/*
+ * main.c
+ *
+ *  Created on: Nov 1, 2020
+ *      Author: raphael oliveira
+ */
+
 #include "cliente.h"
 #include "transacao.h"
 
