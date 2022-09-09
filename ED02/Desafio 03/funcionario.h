@@ -1,7 +1,7 @@
 #include <stdio.h>  // lidar com arquivos (ex.: FILE)
 #include <stdlib.h> // lidar com constantes (ex.: NULL)
 #include <string.h> // lidar com funções de string (ex.: strcpy())
-#include <math.h>
+#include <math.h> // lidar com contas matematicas
 
 typedef struct Funcionario
 {
@@ -172,5 +172,45 @@ int tamanhoArquivo(FILE *arq)
 // ordena um arquivo com o Quick sort
 void ordena_QuickSort(FILE *in, FILE *out)
 {
-  // TODO
+  int i, j, x, left, right;
+  TFunc *y; // * Ler arquivo de entrada
+  TFunc *arquivos[tamanhoArquivo(in)]; // recebe o tamanho do arquivo
+  int tam = 0;
+
+  fseek(in, 0, SEEK_SET);
+  TFunc *f;
+  while ((arquivos[tam] = le(in)) != NULL)
+  {
+    tam++; 
+  }
+
+  left = 0;
+  right = tam -1;
+  i = 0;
+  j = tam - 1;
+  x = arquivos[(i + j) / 2];
+
+  while(i <= j)
+  {
+    while(arquivos[i]->cod < x && i < right) {
+            i++;
+        }
+        while(arquivos[j]->cod > x && j > left) {
+            j--;
+        }
+        if(i <= j) {
+            y = arquivos[i];
+            arquivos[i] = arquivos[j];
+            arquivos[j] = y;
+            i++;
+            j--;
+        }
+    }
+    //incompleto, falta de coerencia na hora da recursão
+    if(j > left) {
+        ordena_QuickSort(FILE *in, FILE *out);
+    }
+    if(i < right) {
+        ordena_QuickSort(FILE *in, FILE *out);
+    }
 }
