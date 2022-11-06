@@ -1,37 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <conio.h>
 
-bool naoHaViolacao(int valorInserido, int posicao, int* vetor)
+bool buscaError(int valorInserido, int posicao, int* vetor)
 {
-    //0 a gente ignora
     if(valorInserido == 0)
         return true;
 
-    //printf("Tentativa a ser inserida: %d\n", valorInserido);
-    //getchar();
-
-    //checa linha
-    int linha = posicao / 9;
-    for(int i = linha * 9 ; i < linha * 9 + 9 ; i++)
+    int linha = posicao / 9; //Para saber em que linha tá
+    for(int i = linha * 9 ; i < linha * 9 + 9 ; i++) // percorre a linha para verificar se o N foi inserido
     {
         if(vetor[i] == valorInserido)
         {
-            //printf("VIOLACAO DE LINHA: posicao %d.\n", i);
-            //getchar();
             return false;
         }
     }
 
-    //checa coluna
-    int coluna = posicao % 9;
-    for(int i = coluna % 9 ; i <= 8 * 9 + coluna % 9 ; i+=9)
+    int coluna = posicao % 9; //Para saber em que coluna tá
+    for(int i = coluna % 9 ; i <= 8 * 9 + coluna % 9 ; i+=9) //Percorre a coluna para verficação
     {
         if(vetor[i] == valorInserido)
         {
-            //printf("VIOLACAO DE COLUNA: posicao %d.\n", i);
-            //getchar();
             return false;
         }
     }
@@ -91,118 +80,112 @@ void imprimeVetor(int* vetor)
     }
 }
 
-void realizaBackTracking(int* vetorSudoku, bool* posicaoPreenchida, int posicao);
+void backTracing(int* sudoku, bool* posicaoPreenchida, int posicao);
 
-void computaSudoku(int* vetorSudoku, bool* posicaoPreenchida, int posicao)
+void computaSudoku(int* sudoku, bool* posicaoPreenchida, int posicao)
 {
-    //printf("Agora estou na posicao: %d\n", posicao);
-    //getchar();
+    while(posicaoPreenchida[posicao] == true) // Enquanto a posição já tiver preenchida
+        posicao++;                            // Passa para a próxima
 
-    while(posicaoPreenchida[posicao] == true)
-        posicao++;
+    int tentativa = sudoku[posicao] + 1;
 
-    //printf("Agora estou na posicao: %d\n", posicao);
-    //getchar();
-
-    int tentativa = vetorSudoku[posicao] + 1;
-    if(tentativa > 9)
+    if(tentativa > 9) //só entra quando a posição for maior que 9
     {
-        realizaBackTracking(vetorSudoku, posicaoPreenchida, posicao);
+        backTracing(sudoku, posicaoPreenchida, posicao);
         tentativa = 1;
     }
 
-    while(!naoHaViolacao(tentativa, posicao, vetorSudoku))
+    /*
+    Verifica se a tentativa 
+    */
+    while(!buscaError(tentativa, posicao, sudoku))
     {
         tentativa++;
         if(tentativa > 9)
         {
-            realizaBackTracking(vetorSudoku, posicaoPreenchida, posicao);
+            backTracing(sudoku, posicaoPreenchida, posicao);
             tentativa = 1;
         }
     }
 
-    vetorSudoku[posicao] = tentativa;
+    sudoku[posicao] = tentativa;
 
-    //printf("Beleza, inseri.\n");
-    //getchar();
-    if(verificaSeTerminou(vetorSudoku))
+    if(verificaSeTerminou(sudoku))
     {
         printf("****************************************\n");
         printf("\tResolucao Final: \n\n");
 
-        imprimeVetor(vetorSudoku);
+        imprimeVetor(sudoku);
         printf("****************************************\n");
         exit(0);
     }
-    //imprimeVetor(vetorSudoku);
-    //getchar();
-    computaSudoku(vetorSudoku, posicaoPreenchida, posicao + 1);
+    computaSudoku(sudoku, posicaoPreenchida, posicao + 1);
 }
 
-void realizaBackTracking(int* vetorSudoku, bool* posicaoPreenchida, int posicao)
+void backTracing(int* sudoku, bool* posicaoPreenchida, int posicao)
 {
-    vetorSudoku[posicao] = 0;
+    sudoku[posicao] = 0;
     posicao--;
     while(posicaoPreenchida[posicao] == true)
         posicao--;
-    //printf("Precisei fazer backtracking pra posicao %d\n", posicao);
-    //getchar();
-    computaSudoku(vetorSudoku, posicaoPreenchida, posicao);
+    computaSudoku(sudoku, posicaoPreenchida, posicao);
 }
 
 int main()
 {
-    int vetorSudoku[81]         = {0};
+    int sudoku[81]         = {0};
     bool posicaoPreenchida[81]  = {false};
 
-    //posicoes preenchidas
-    vetorSudoku[0] = 5; posicaoPreenchida[0] = true;
-    vetorSudoku[1] = 3; posicaoPreenchida[1] = true;
-    vetorSudoku[4] = 7; posicaoPreenchida[4] = true;
+    // Os vetores que estão marcadas como true é para sinalizar que
+    // a mesma não popde ser alterada, já é um número fixo
 
-    vetorSudoku[9] = 6; posicaoPreenchida[9] = true;
-    vetorSudoku[12] = 1; posicaoPreenchida[12] = true;
-    vetorSudoku[13] = 9; posicaoPreenchida[13] = true;
-    vetorSudoku[14] = 5; posicaoPreenchida[14] = true;
+    sudoku[0] = 5; posicaoPreenchida[0] = true;
+    sudoku[1] = 3; posicaoPreenchida[1] = true;
+    sudoku[4] = 7; posicaoPreenchida[4] = true;
 
-    vetorSudoku[19] = 9; posicaoPreenchida[19] = true;
-    vetorSudoku[20] = 8; posicaoPreenchida[20] = true;
-    vetorSudoku[25] = 6; posicaoPreenchida[25] = true;
+    sudoku[9] = 6; posicaoPreenchida[9] = true;
+    sudoku[12] = 1; posicaoPreenchida[12] = true;
+    sudoku[13] = 9; posicaoPreenchida[13] = true;
+    sudoku[14] = 5; posicaoPreenchida[14] = true;
 
-    vetorSudoku[27] = 8; posicaoPreenchida[27] = true;
-    vetorSudoku[31] = 6; posicaoPreenchida[31] = true;
-    vetorSudoku[35] = 3; posicaoPreenchida[35] = true;
+    sudoku[19] = 9; posicaoPreenchida[19] = true;
+    sudoku[20] = 8; posicaoPreenchida[20] = true;
+    sudoku[25] = 6; posicaoPreenchida[25] = true;
 
-    vetorSudoku[36] = 4; posicaoPreenchida[36] = true;
-    vetorSudoku[39] = 8; posicaoPreenchida[39] = true;
-    vetorSudoku[41] = 3; posicaoPreenchida[41] = true;
-    vetorSudoku[44] = 1; posicaoPreenchida[44] = true;
+    sudoku[27] = 8; posicaoPreenchida[27] = true;
+    sudoku[31] = 6; posicaoPreenchida[31] = true;
+    sudoku[35] = 3; posicaoPreenchida[35] = true;
 
-    vetorSudoku[45] = 7; posicaoPreenchida[45] = true;
-    vetorSudoku[49] = 2; posicaoPreenchida[49] = true;
-    vetorSudoku[53] = 6; posicaoPreenchida[53] = true;
+    sudoku[36] = 4; posicaoPreenchida[36] = true;
+    sudoku[39] = 8; posicaoPreenchida[39] = true;
+    sudoku[41] = 3; posicaoPreenchida[41] = true;
+    sudoku[44] = 1; posicaoPreenchida[44] = true;
 
-    vetorSudoku[55] = 6; posicaoPreenchida[55] = true;
-    vetorSudoku[60] = 2; posicaoPreenchida[60] = true;
-    vetorSudoku[61] = 8; posicaoPreenchida[61] = true;
+    sudoku[45] = 7; posicaoPreenchida[45] = true;
+    sudoku[49] = 2; posicaoPreenchida[49] = true;
+    sudoku[53] = 6; posicaoPreenchida[53] = true;
 
-    vetorSudoku[66] = 4; posicaoPreenchida[66] = true;
-    vetorSudoku[67] = 1; posicaoPreenchida[67] = true;
-    vetorSudoku[68] = 9; posicaoPreenchida[68] = true;
-    vetorSudoku[71] = 5; posicaoPreenchida[71] = true;
+    sudoku[55] = 6; posicaoPreenchida[55] = true;
+    sudoku[60] = 2; posicaoPreenchida[60] = true;
+    sudoku[61] = 8; posicaoPreenchida[61] = true;
 
-    vetorSudoku[76] = 8; posicaoPreenchida[76] = true;
-    vetorSudoku[79] = 7; posicaoPreenchida[79] = true;
-    vetorSudoku[80] = 9; posicaoPreenchida[80] = true;
+    sudoku[66] = 4; posicaoPreenchida[66] = true;
+    sudoku[67] = 1; posicaoPreenchida[67] = true;
+    sudoku[68] = 9; posicaoPreenchida[68] = true;
+    sudoku[71] = 5; posicaoPreenchida[71] = true;
 
-    printf("\n****************************************\n");
+    sudoku[76] = 8; posicaoPreenchida[76] = true;
+    sudoku[79] = 7; posicaoPreenchida[79] = true;
+    sudoku[80] = 9; posicaoPreenchida[80] = true;
+
+    printf("\n++++++++++++++++++++++++++++++++++++++\n");
     printf("\tTabuleiro inicial: \n\n");
 
-        imprimeVetor(vetorSudoku);
+        imprimeVetor(sudoku);
 
-    printf("****************************************\n");
+    printf("++++++++++++++++++++++++++++++++++++++++\n");
     printf("\n\n");
-    computaSudoku(vetorSudoku, posicaoPreenchida, 0);
+    computaSudoku(sudoku, posicaoPreenchida, 0);
 
     return 0;
 }
