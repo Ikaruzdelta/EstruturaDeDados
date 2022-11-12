@@ -108,6 +108,13 @@ int main()
                       {0, 0, 0, 4, 1, 9, 0, 0, 5},
                       {0, 0, 0, 0, 8, 0, 0, 7, 9}};
 
+    cout << "======== MATRIZ INICIAL ==========";
+    cout << endl;
+    print(grid);
+    cout << endl;
+
+    cout << "======== MATRIZ FINAL ==========";
+    cout << endl;
     if (sudoku(grid, 0, 0))
         print(grid);
     else
